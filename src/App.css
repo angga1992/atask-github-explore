@@ -1,0 +1,371 @@
+:root {
+  --primary-color: #0366d6;
+  --background-color: #ffffff;
+  --text-color: #24292e;
+  --border-color: #e1e4e8;
+  --hover-color: #f6f8fa;
+  --error-color: #d73a49;
+  --success-color: #28a745;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  line-height: 1.5;
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+h1 {
+  color: #0366d6;
+  font-size: 24px;
+  margin-bottom: 2rem;
+}
+
+.search-container {
+  margin-bottom: 2rem;
+}
+
+.search-container form {
+  display: flex;
+  gap: 8px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.search-input:focus {
+  border-color: var(--primary-color);
+}
+
+.search-button {
+  padding: 8px 16px;
+  background-color: #0366d6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.search-button:hover {
+  background-color: #0256b3;
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.results-text {
+  color: #586069;
+  font-size: 14px;
+}
+
+.results-per-page {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #586069;
+}
+
+.results-per-page select {
+  padding: 4px 8px;
+  border: 1px solid #e1e4e8;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.user-item-container {
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.user-item-container:last-child {
+  border-bottom: none;
+}
+
+.user-item {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.user-item:hover {
+  background-color: #f6f8fa;
+}
+
+.user-login {
+  font-weight: 500;
+}
+
+.user-repositories {
+  border-top: 1px solid #e1e4e8;
+  background-color: #f6f8fa;
+}
+
+.repository-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.repository-header-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #f6f8fa;
+  border: 1px solid #e1e4e8;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+}
+
+.repository-count {
+  font-size: 14px;
+  color: #586069;
+}
+
+.repository-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #e1e4e8;
+  border-radius: 0 0 6px 6px;
+}
+
+.repository-item {
+  padding: 16px;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.repository-item:last-child {
+  border-bottom: none;
+}
+
+.repository-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.repository-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0366d6;
+  margin: 0;
+}
+
+.repository-stars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #586069;
+  font-size: 14px;
+}
+
+.repository-description {
+  color: #586069;
+  font-size: 14px;
+  margin: 0;
+}
+
+.no-repos-message {
+  padding: 16px;
+  color: #586069;
+  font-style: italic;
+}
+
+.error-message {
+  color: #cb2431;
+  background-color: #ffeef0;
+  padding: 16px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.loading-container {
+  text-align: center;
+  padding: 2rem;
+  color: #586069;
+}
+
+.spinner {
+  border: 2px solid #e1e4e8;
+  border-top-color: #0366d6;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 8px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  color: #586069;
+  transition: transform 0.2s ease;
+}
+
+.chevron-down.chevron-expanded {
+  transform: rotate(180deg);
+}
+
+.star {
+  color: #e3b341;
+}
+
+/* Pagination styles */
+.pagination,
+.user-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-top: 1px solid #e1e4e8;
+  background-color: #f6f8fa;
+  border: 1px solid #e1e4e8;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+}
+
+.user-pagination {
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+.pagination-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.pagination-button {
+  padding: 6px 12px;
+  background-color: #fff;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  color: #0366d6;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: #f1f8ff;
+}
+
+.pagination-button:disabled {
+  color: #959da5;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  color: #586069;
+  font-size: 14px;
+}
+
+.pagination-pages {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pagination-page-button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #0366d6;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pagination-page-button:hover:not(.active) {
+  background-color: #f1f8ff;
+}
+
+.pagination-page-button.active {
+  background-color: #0366d6;
+  color: #fff;
+  border-color: #0366d6;
+}
+
+.pagination-ellipsis {
+  color: #586069;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .search-container form {
+    flex-direction: column;
+  }
+
+  .search-button {
+    width: 100%;
+  }
+
+  .results-header,
+  .repository-header-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .pagination,
+  .user-pagination {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .pagination-info {
+    order: -1;
+  }
+
+  .pagination-pages {
+    order: -1;
+  }
+}
+
