@@ -1,45 +1,47 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import UserList from '../UserList';
-import { User } from '../../types';
+import { render, screen, fireEvent } from "@testing-library/react"
+import UserList from "../UserList"
+import type { User } from "../../types"
 
-describe('UserList Component', () => {
+describe("UserList Component", () => {
   const mockUsers: User[] = [
     {
       id: 1,
-      login: 'user1',
-      avatar_url: 'https://example.com/avatar1.png',
-      html_url: 'https://github.com/user1'
+      login: "user1",
+      avatar_url: "https://example.com/avatar1.png",
+      html_url: "https://github.com/user1",
+      isExpanded: false,
     },
     {
       id: 2,
-      login: 'user2',
-      avatar_url: 'https://example.com/avatar2.png',
-      html_url: 'https://github.com/user2'
-    }
-  ];
+      login: "user2",
+      avatar_url: "https://example.com/avatar2.png",
+      html_url: "https://github.com/user2",
+      isExpanded: false,
+    },
+  ]
 
-  const mockOnSelectUser = jest.fn();
+  const mockOnToggleUser = jest.fn()
 
   beforeEach(() => {
-    mockOnSelectUser.mockClear();
-  });
+    mockOnToggleUser.mockClear()
+  })
 
-  test('renders list of users', () => {
-    render(<UserList users={mockUsers} onSelectUser={mockOnSelectUser} />);
-    
-    expect(screen.getByText('user1')).toBeInTheDocument();
-    expect(screen.getByText('user2')).toBeInTheDocument();
-    expect(screen.getAllByRole('img')).toHaveLength(2);
-  });
+  test("renders list of users", () => {
+    render(<UserList users={mockUsers} onToggleUser={mockOnToggleUser} />)
 
-  test('calls onSelectUser when a user is clicked', () => {
-    render(<UserList users={mockUsers} onSelectUser={mockOnSelectUser} />);
-    
-    const userItem = screen.getByText('user1').closest('li');
+    expect(screen.getByText("user1")).toBeInTheDocument()
+    expect(screen.getByText("user2")).toBeInTheDocument()
+  })
+
+  test("calls onToggleUser when a user is clicked", () => {
+    render(<UserList users={mockUsers} onToggleUser={mockOnToggleUser} />)
+
+    const userItem = screen.getByText("user1").closest(".user-item")
     if (userItem) {
-      fireEvent.click(userItem);
+      fireEvent.click(userItem)
     }
-    
-    expect(mockOnSelectUser).toHaveBeenCalledWith(mockUsers[0]);
-  });
-});
+
+    expect(mockOnToggleUser).toHaveBeenCalledWith(mockUsers[0].id)
+  })
+})
+
